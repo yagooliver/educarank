@@ -1,0 +1,95 @@
+﻿@model EducaRank.MVC.ViewModels.ConsultaEscolaVM
+
+@{
+    ViewBag.Title = "MapaEscolas";
+    Layout = "~/Views/Shared/_LayoutMapa.cshtml";
+}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">
+@*<script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>*@
+<script type="text/javascript" src="~/scripts/jquery-1.10.2.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7yxyLKxj1uHBbmyAdEQQXi9xpu1ztwfk"
+        type="text/javascript"></script>
+<script src="//code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+<script type="text/javascript" src="~/scripts/custom/mapApi.js"></script>
+<script type="text/javascript" src="~/scripts/custom/consulta-escola.js"></script>
+<script>
+    //window.onload = function(){
+    //    initMap();
+    //}
+    $(document).ready(function () {
+        initMap(10);
+        $("#btnPesquisa").click(function () {
+            var escola = $("#Escola").val();
+            var bairro = $("#Bairro").val();
+            var tipoCiclo = $("#TipoCiclo").val();
+
+            consultaEscola(escola, bairro, tipoCiclo);
+        });
+    });
+</script>
+<style>
+    body {
+    overflow:hidden;
+}
+    #map {
+        height: 650px;
+        width: 100%;
+        float: right;
+    }
+</style>
+<div id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <div class="sidebar-nav">
+            <img src="~/Img/logo5.png" style="width: 200px; margin: 15px 0px 15px 25px" />
+            @using (Html.BeginForm())
+            {
+                <div class="container">
+                    <div class="col-sm-3" style="float:left;width:30%">
+                        <div class="form-group">
+                            <label for="Escola" class="control-label" style="color:#fff">Escola:</label>
+                            @Html.TextBoxFor(x => x.Escola, new { @class = "form-control", @style = "width: 200px;" })
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" style="color:#fff; width: 200px;">Tipo Ciclo:</label>
+                            @Html.DropDownListFor(x => x.TipoCiclo, Model.TiposCiclos, new { @class = "form-control", @style = "width: 200px;" })
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" style="color:#fff">Bairros:</label>
+                            @Html.DropDownListFor(x => x.Bairro, Model.Bairros, new { @class = "form-control", @style = "width: 200px;" })
+                        </div>
+                        <input type="button" id="btnPesquisa" value="Pesquisar" class="btn-success btn-sm" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12" >
+                    <div class="row" style="background-color:#1AA195; color:#FFF; height: 70px;">
+                        <div style="margin-top: 20px;" class="col-md-1">
+                            <button type="button" data-toggle="collapse" data-target="#navbar-collapse" href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+                                <i class="fa fa-navicon"></i>
+                            </button>
+                        </div>
+                        <div class="col-md-11">
+                            <h2><strong>Mapa das escolas do município de Fortaleza</strong> </h2>
+                        </div>
+                    </div>
+                    <div class="form-horizontal">
+                        <div id="map"></div>
+                    </div>
+
+                    <div class="modal">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+</div>

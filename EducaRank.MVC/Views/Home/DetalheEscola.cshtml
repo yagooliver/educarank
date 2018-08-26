@@ -1,0 +1,76 @@
+﻿@model EducaRank.MVC.ViewModels.EscolaViewModel
+@{
+    Layout = null;
+}
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <div class="container">
+                    <div class="row">
+                        <h4>@Model.UnidadeEscolar </h4>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h3>Nota:</h3>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>@Model.Nota </h3>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>Colocação:</h3>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>@Model.Colocacao º Lugar </h3>
+                        </div>
+                    </div>
+                    
+                    <br /><br />
+
+                    <p> <strong style="color: #1AA195"> Bairro:</strong> @Model.Bairro </p>
+                    <p> <strong style="color: #1AA195"> Endereco:</strong> @Model.Endereco </p>
+                    <p> <strong style="color: #1AA195"> IDH do Bairro:</strong> @Model.IdhBairro </p>
+                    <p> <strong style="color: #1AA195"> IDH do Bairro (educação):</strong> @Model.IdhEducacaoBairro </p>
+                    <p> <strong style="color: #1AA195"> Possui Creche? </strong> @if ((bool)Model.PossuiCreche)
+                    {<div> Sim</div> }
+                    else
+                    { <div> Não </div> } </p>
+                    <p> <strong style="color: #1AA195"> Possui Pré Escola?</strong> @if ((bool)Model.PossuiPreEscola)
+                    {<div> Sim</div> }
+                    else
+                    { <div> Não </div> } </p>
+                    <p> <strong style="color: #1AA195"> Possui Educação Infantil?</strong> @if ((bool)Model.PossuiEducacaoInfantil)
+                    {<div> Sim</div> }
+                    else
+                    { <div> Não </div> } </p>
+                    <p> <strong style="color: #1AA195"> Possui EF I? </strong> @if ((bool)Model.PossuiFundum)
+                    {<div> Sim</div> }
+                    else
+                    { <div> Não </div> } </p>
+                    <p> <strong style="color: #1AA195"> Possui EF II?</strong> @if ((bool)Model.PossuiFundDois)
+                    {<div> Sim</div> }
+                    else
+                    { <div> Não </div> } </p>
+                    <p> <strong style="color: #1AA195"> Possui EJA?</strong> @if ((bool)Model.PossuiEja)
+                    {<div> Sim</div> }
+                    else
+                    { <div> Não </div> } </p>
+                </div>          
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

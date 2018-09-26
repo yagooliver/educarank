@@ -7,6 +7,6 @@ Map the school units in Fortaleza, CE, Brazil and rank them so that the parents 
 - ASP.NET MVC
 - Fluent NHibernate
 - Postgresql
-- DDD (Driven domain design)
+- DDD (Domain driven design)
 - SimpleInjector
 - Javascript
